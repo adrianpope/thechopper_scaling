@@ -11,8 +11,7 @@ def arr_stdev(arr):
     return np.sqrt( ((arr - aa)**2).sum() / (arr.size - 1.0) )
 
 # per rank on the comm
-def print_timing_stats(comm, t1, t2, label=''):
-    dt = t2-t1
+def print_timing_stats(comm, dt, label=''):
     rank = comm.Get_rank()
     size = comm.Get_size()
     dta_in = np.zeros(size)

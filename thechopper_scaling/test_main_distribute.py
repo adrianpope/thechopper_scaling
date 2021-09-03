@@ -22,12 +22,12 @@ def scaling_test(comm, n_p, r_L, r_max, prq=False):
         cat['y'] = r_L*nr.rand(n_p**3)
         cat['z'] = r_L*nr.rand(n_p**3)
     t2 = MPI.Wtime()
-    print_timing_stats(comm, t1, t2, 'init ')
+    print_timing_stats(comm, t2-t1, 'init ')
 
     t1 = MPI.Wtime()
     _r = tc.get_buffered_subvolumes(comm, cat, nx, ny, nz, r_L, r_max)
     t2 = MPI.Wtime()
-    print_timing_stats(comm, t1, t2, 'xfer ')
+    print_timing_stats(comm, t2-t1, 'xfer ')
     
     dl, rl = _r
 
@@ -72,4 +72,4 @@ if __name__ == '__main__':
     scaling_test(comm, n_p, r_L, r_max, prq!=0)
 
     t2 = MPI.Wtime()
-    print_timing_stats(comm, t1, t2, 'total')
+    print_timing_stats(comm, t2-t1, 'total')
