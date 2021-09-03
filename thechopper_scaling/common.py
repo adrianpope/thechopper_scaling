@@ -51,15 +51,6 @@ def print_counting_stats(comm, nx, ny, nz, dl, rl):
     comm.Barrier()
     return
 
-# divided over nx*ny*nz sub-volumes
-def counting_prediction(n_p, r_L, r_max, nx, ny, nz):
-    dx = r_L/nx + 2.0*r_max
-    dy = r_L/ny + 2.0*r_max
-    dz = r_L/nz + 2.0*r_max
-    navg = dx*dy*dz*n_p**3/r_L**3
-    nstdev = np.sqrt(navg)
-    return navg, nstdev
-
 def minmax2str(arr):
     return '[%.3f,%.3f]'%(arr.min(),arr.max())
 
