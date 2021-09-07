@@ -29,14 +29,14 @@ def print_timing_stats(comm, dt, label=''):
     return
 
 # per rank in nx*ny*nz
-def print_counting_stats(comm, nx, ny, nz, dl, rl):
+def print_counting_stats(comm, nx, ny, nz, data_list, cell_list):
     nxnynz = nx*ny*nz
     na_in = np.zeros(nxnynz)
-    for i in range(len(rl)):
-        r = rl[i]
-        d = dl[i]
+    for i in range(len(cell_list)):
+        c = cell_list[i]
+        d = data_list[i]
         x = d['x']
-        na_in[r] = len(x)
+        na_in[c] = len(x)
     na = np.zeros(nxnynz)
     comm.Allreduce(na_in, na, MPI.SUM)
 
@@ -56,20 +56,20 @@ def minmax2str(arr):
 
 # loops over ranks on comm
 # prints x,y,z min/max info for all ranks in nx*ny*nz
-def print_ranges(comm, dl, rl):
+def print_ranges(comm, data_list, cell_list):
     rank = comm.Get_rank()
     size = comm.Get_size()
     
     for i in range(size):
         comm.Barrier()
         if i == rank:
-            for j in range(len(rl)):
-                r = rl[j]
-                d = dl[j]
+            for j in range(len(cell_list)):
+                c = cell_list[j]
+                d = data_list[j]
                 x = d['x']
                 y = d['y']
                 z = d['z']
-                print('%d %d n = %d x = %s y = %s z = %s'%(rank,r,len(x),minmax2str(x),minmax2str(y),minmax2str(z)))
+                print('%d %d n = %d x = %s y = %s z = %s'%(rank,c,len(x),minmax2str(x),minmax2str(y),minmax2str(z)))
             sys.stdout.flush()
         comm.Barrier()
     return

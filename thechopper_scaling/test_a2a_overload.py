@@ -40,11 +40,11 @@ def scaling_test(comm, n_p, r_L, r_max, prq=False):
     t2 = MPI.Wtime()
     print_timing_stats(comm, t2-t1, 'init ')
 
-    rl = [mycell]
-    dl = [cat_in]
+    cell_list = [mycell]
+    data_list = [cat_in]
     
     if prq:
-        print_ranges(comm, dl, rl)
+        print_ranges(comm, data_list, cell_list)
         comm.Barrier()
 
     t1 = MPI.Wtime()
@@ -52,13 +52,16 @@ def scaling_test(comm, n_p, r_L, r_max, prq=False):
     t2 = MPI.Wtime()
     print_timing_stats(comm, t2-t1, 'xfer ')
 
-    dl = [cat_out[mycell]]
+    cell_list = list(cat_out.keys())
+    data_list = []
+    for k in cat_out.keys():
+        data_list.append(cat_out[k])
 
-    print_counting_stats(comm, nx, ny, nz, dl, rl)
+    print_counting_stats(comm, nx, ny, nz, data_list, cell_list)
     comm.Barrier()
     
     if prq:
-        print_ranges(comm, dl, rl)
+        print_ranges(comm, data_list, cell_list)
         comm.Barrier()
 
     return
