@@ -54,8 +54,8 @@ def scaling_test(comm, n_p, r_L, r_max, prq=False):
 
     cell_list = list(cat_out.keys())
     data_list = []
-    for k in cat_out.keys():
-        data_list.append(cat_out[k])
+    for c in cell_list:
+        data_list.append(cat_out[c])
 
     print_counting_stats(comm, nx, ny, nz, data_list, cell_list)
     comm.Barrier()
