@@ -1,0 +1,39 @@
+
+curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+/lus/grand/projects/catalyst/world-shared/apope/darkskyml_aesp/miniconda3
+
+eval "$(/lus/grand/projects/catalyst/world-shared/apope/darkskyml_aesp/miniconda3/bin/conda shell.YOUR_SHELL_NAME hook)"
+
+eval "$(/lus/grand/projects/catalyst/world-shared/apope/darkskyml_aesp/miniconda3/bin/conda shell.bash hook)"
+
+source miniconda3.sh
+
+conda install numpy
+
+# cray mpich abi module?
+# do not need this if building mpi4py with cray cc wrapper
+#module load cray-mpich-abi
+
+# pip mpi w/o binary?
+CC=cc MPICC=cc pip install -v --no-binary :all: mpi4py
+
+# python setup.py thechopper/alltoall branch
+git clone https://github.com/ArgonneCPAC/thechopper.git
+cd thechopper
+git checkout alltoall
+python setup.py install
+
+#
+git clone https://github.com/adrianpope/thechopper_scaling.git
+
+#interactive node, aprun
+qsub -I -n 1 -t 60 -q debug-cache-quad -A catalyst --attrs enable_ssh=1
+#module load cray-mpich-abi
+export LD_LIBRARY_PATH=$LIBRARY_PATH
+time aprun -n 8 python test_a2a_overload.py 32 100 10 1
+
+time aprun -n 8 "source /tmp/apope/miniconda3/bin/activate; python test_a2a_overload.py 32 100 10 1"
+
+# to do
+# update numpy.random seeding to get different randoms on each rank
