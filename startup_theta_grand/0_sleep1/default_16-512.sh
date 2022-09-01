@@ -1,0 +1,12 @@
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 128 ./qsub_theta.sh 16 1 sleep1_0016_01.csv ./sleep1.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 128 ./qsub_theta.sh 16 64 sleep1_0016_64.csv ./sleep1.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 128 ./qsub_theta.sh 32 1 sleep1_0032_01.csv ./sleep1.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 128 ./qsub_theta.sh 32 64 sleep1_0032_64.csv ./sleep1.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 128 ./qsub_theta.sh 64 1 sleep1_0064_01.csv ./sleep1.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 128 ./qsub_theta.sh 64 64 sleep1_0064_64.csv ./sleep1.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 128 ./qsub_theta.sh 128 1 sleep1_0128_01.csv ./sleep1.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 128 ./qsub_theta.sh 128 64 sleep1_0128_64.csv ./sleep1.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 256 ./qsub_theta.sh 256 1 sleep1_0256_01.csv ./sleep1.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 256 ./qsub_theta.sh 256 64 sleep1_0256_64.csv ./sleep1.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 512 ./qsub_theta.sh 512 1 sleep1_0512_01.csv ./sleep1.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 512 ./qsub_theta.sh 512 64 sleep1_0512_64.csv ./sleep1.sh
