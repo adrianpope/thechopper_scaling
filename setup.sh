@@ -7,6 +7,7 @@ TOP_DIR=python
 CONDA_DIR=miniconda3
 CONDA_SH=${CONDA_DIR}.sh
 LOG_DIR=log
+PACK_DIR=packed
 
 do_miniconda3=true
 do_basepkg=true
@@ -107,6 +108,9 @@ then
     do
 	echo ""
 	echo "CONDA-PACK ${branch}"
-	time conda pack -n ${branch} -o ${branch}.tar.gz > ${LOG_DIR}/pack.${branch}.log
+	mkdir -p ${PACK_DIR}
+	outname=${PACK_DIR}/${branch}.tar.gz
+	rm -f ${outname}
+	time conda pack -n ${branch} -o ${outname} > ${LOG_DIR}/pack.${branch}.log
     done
 fi
