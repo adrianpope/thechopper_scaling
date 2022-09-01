@@ -9,6 +9,9 @@ CONDA_SH=${CONDA_DIR}.sh
 LOG_DIR=log
 PACK_DIR=packed
 
+MPICC=cc
+CC=cc
+
 do_miniconda3=true
 do_basepkg=true
 do_envpkg=true
@@ -76,7 +79,7 @@ then
 	conda activate ${branch}
 	echo ""
 	echo "INSTALLING mpi4py INTO ${branch}"
-	time CC=cc MPICC=cc pip install --no-deps -v --no-binary :all: mpi4py > ${LOG_DIR}/mpi4py.${branch}.log 2>&1
+	time CC=${CC} MPICC=${MPICC} pip install --no-deps -v --no-binary :all: mpi4py > ${LOG_DIR}/mpi4py.${branch}.log 2>&1
 	conda deactivate
     done
     #conda clean --all -y
