@@ -1,0 +1,21 @@
+qsub -I -n 1 -t 60 -q debug-cache-quad -A catalyst --attrs ssds=required:ssd_size=128:enable_ssh=1:filesystems=home,grand
+
+/local/scratch (ssd)
+/dev/shm (ramdisk?)
+
+mkdir alltoall
+tar -zxf alltoall.tar.gz -C alltoall
+source alltoall/bin/activate
+conda-unpack
+
+source alltoall/bin/deactivate
+
+ssd:
+tar 5.5s
+source ~0s
+unpack ~1s
+
+ramdisk:
+tar 5.5s
+source ~0s
+unpack ~1s
