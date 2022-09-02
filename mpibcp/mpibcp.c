@@ -116,8 +116,8 @@ int main(int argc, char *argv[]) {
     sr = read_file(src, s, buffer);
     t1 = MPI_Wtime();
     
-    fprintf(stdout, "rank %d read %ld of %ld bytes in %f seconds: %e MiB/s\n",
-	    rank, sr, s, t1-t0, (1.0*sr)/MiB/(t1-t0) );
+    fprintf(stdout, "read  %ld of %ld bytes in %f seconds: %e MiB/s\n",
+	    sr, s, t1-t0, (1.0*sr)/MiB/(t1-t0) );
     fflush(stdout);
   }
 
@@ -142,8 +142,8 @@ int main(int argc, char *argv[]) {
   t1 = MPI_Wtime();
   
   if(rank == 0) {
-    fprintf(stdout, "bcast %ld bytes in %f seconds: %e MiB/s\n", 
-	    s, t1-t0, (1.0*s)/MiB/(t1-t0) );
+    fprintf(stdout, "bcast %ld of %ld bytes in %f seconds: %e MiB/s\n", 
+	    s, s, t1-t0, (1.0*s)/MiB/(t1-t0) );
     fflush(stdout);
   }
 
