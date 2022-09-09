@@ -1,0 +1,10 @@
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 128 ./qsub_theta.sh 128 1 numpy_0128_01 ./numpy.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 128 ./qsub_theta.sh 128 64 numpy_0128_64 ./numpy.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 256 ./qsub_theta.sh 256 1 numpy_0256_01 ./numpy.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 256 ./qsub_theta.sh 256 64 numpy_0256_64 ./numpy.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 512 ./qsub_theta.sh 512 1 numpy_0512_01 ./numpy.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 512 ./qsub_theta.sh 512 64 numpy_0512_64 ./numpy.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 1024 ./qsub_theta.sh 1024 1 numpy_1024_01 ./numpy.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 1024 ./qsub_theta.sh 1024 64 numpy_1024_64 ./numpy.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 2048 ./qsub_theta.sh 2048 1 numpy_2048_01 ./numpy.sh
+qsub --attrs filesystems=home,grand -A catalyst -q default -t 30 -n 2048 ./qsub_theta.sh 2048 64 numpy_2048_64 ./numpy.sh
