@@ -1,0 +1,11 @@
+apope@cori06:~> sqs
+JOBID            ST USER      NAME          NODES TIME_LIMIT       TIME  SUBMIT_TIME          QOS             START_TIME           FEATURES       NODELIST(REASON
+62582055         PD apope     sbatch_cori-  2048     1:00:00       0:00  2022-09-07T15:16:50  regular_0       N/A                  knl&quad&cache (Priority)     
+62582056         PD apope     sbatch_cori-  2048     1:00:00       0:00  2022-09-07T15:16:51  regular_0       N/A                  knl&quad&cache (Priority)     
+62661464         PD apope     sbatch_cori-  2048     1:00:00       0:00  2022-09-09T21:48:23  regular_0       N/A                  knl&quad&cache (Priority)     
+apope@cori06:~> scontrol show jobid -dd 62582055 | grep Command
+   Command=./sbatch_cori-knl.sh 2048 1 thechopper_2048_01.csv ./thechopper.sh
+apope@cori06:~> scontrol show jobid -dd 62582056 | grep Command
+   Command=./sbatch_cori-knl.sh 2048 68 thechopper_2048_68.csv ./thechopper.sh
+apope@cori06:~> scontrol show jobid -dd 62661464 | grep Command
+   Command=./sbatch_cori-knl.sh 2048 68 numpy_2048_68.csv ./numpy.sh
