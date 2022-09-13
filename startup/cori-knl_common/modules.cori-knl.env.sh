@@ -1,1 +1,1 @@
-../modules.cori-knl.env.sh
+../../modules.cori-knl.env.sh

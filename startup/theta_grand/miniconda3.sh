@@ -1,1 +1,1 @@
-../python/miniconda3.sh
+../../python/miniconda3.sh
