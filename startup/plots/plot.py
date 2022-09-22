@@ -15,6 +15,8 @@ myplot=plt.plot
 #myyscale='linear'
 myxscale='log'
 myyscale='log'
+myymin=1./60
+myymax=60
 
 mydata=[]
 mylabels=[]
@@ -50,6 +52,8 @@ plt.xlabel('nodes')
 plt.ylabel('minutes')
 plt.xscale(myxscale)
 plt.yscale(myyscale)
+ax=plt.axis()
+plt.axis((ax[0],ax[1],myymin,myymax))
 plt.title(title)
 plt.savefig('%s_nodes.pdf'%outBase)
 plt.savefig('%s_nodes.png'%outBase,dpi=dpi)
@@ -67,6 +71,8 @@ plt.xlabel('ranks')
 plt.ylabel('minutes')
 plt.xscale(myxscale)
 plt.yscale(myyscale)
+ax=plt.axis()
+plt.axis((ax[0],ax[1],myymin,myymax))
 plt.title(title)
 plt.savefig('%s_ranks.pdf'%outBase)
 plt.savefig('%s_ranks.png'%outBase,dpi=dpi)

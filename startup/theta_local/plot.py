@@ -12,8 +12,12 @@ linestyle_list = ['-','--','-.',':']
 
 minutesQ=False
 ylabel='seconds'
+ymin=10.
+ymax=90.
 if minutesQ:
     ylabel='minutes'
+    ymin *= 1./60
+    ymax *= 1./60
 
 myplot=plt.loglog
 
@@ -51,6 +55,8 @@ for i in range(len(mydata)):
 plt.legend()
 plt.xlabel('nodes')
 plt.ylabel(ylabel)
+ax = plt.axis()
+plt.axis((ax[0],ax[1],ymin,ymax))
 plt.title(title)
 plt.savefig('%s_nodes.pdf'%outBase)
 plt.savefig('%s_nodes.png'%outBase,dpi=dpi)
@@ -68,6 +74,8 @@ for i in range(len(mydata)):
 plt.legend()
 plt.xlabel('ranks')
 plt.ylabel(ylabel)
+ax = plt.axis()
+plt.axis((ax[0],ax[1],ymin,ymax))
 plt.title(title)
 plt.savefig('%s_ranks.pdf'%outBase)
 plt.savefig('%s_ranks.png'%outBase,dpi=dpi)
